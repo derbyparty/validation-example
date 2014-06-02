@@ -1,2 +1,36 @@
 <Body:>
-  <h1>Hello, world!</h1>
+  <h1>Hello, Validation!</h1>
+  <p><a on-click="clear()">New</a></p>
+  {{if _page.product}}
+    <p>
+      Name: <input type="text" value="{{_page.product.name}}"/>
+      <span>{{_page.errors.name}}</span>
+    </p>
+    <p>
+      Price: <input type="text" value="{{_page.product.price}}"/>
+      <span>{{_page.errors.price}}</span>
+    </p>
+    <p><a on-click="save()">Save</a></p>
+  {{/if}}
+
+  <h4>Products:</h4>
+  {{each _page.products as #product}}
+    <p>
+      <strong>{{#product.name}}</strong> 
+      <span>{{#product.price}}</span>
+    </p>
+  {{/each}}
+  <!--
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+    {{each _page.products as #product}}
+      <tr>
+        <td>{{#product.name}}</td>
+        <td>{{#product.price}}</td>
+      </tr>
+    {{/each}}
+  </table>
+  -->

@@ -1,5 +1,8 @@
 // 4-ый экспресс
 var express = require('express');
+var Validation = require('derby-validation');
+var settings = require('./settings');
+var validation = new Validation(settings);
 
 // В 4-ом экспрессе все middleware вынесены в отдельные модули
 // приходится каждый из них подключать по отдельности
@@ -44,6 +47,8 @@ exports.setup = function setup(app, options) {
         db: liveDbMongo(process.env.MONGO_URL + '?auto_reconnect', {safe: true}),
         redis: redisClient
     });
+
+    validation.setupStore(store);
 
     var expressApp = express()
 
